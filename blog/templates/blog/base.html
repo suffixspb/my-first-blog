@@ -7,7 +7,12 @@
     </head>
   <body>
     <div class="page-header">
-        <h1><a href="/">Blog</a></h1>
+        <h1>
+          <a href="/">Blog</a>
+            {% if user.is_authenticated %}
+              <a href="{% url 'post_new' %}">+</a>
+            {% endif %}
+        </h1>
     </div>
     <div class="content container">
         <div class="row">
