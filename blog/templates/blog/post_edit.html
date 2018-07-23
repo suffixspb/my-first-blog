@@ -1,9 +1,13 @@
 {% extends 'blog/base.html' %}
-
-{% block content %}
-    <h1>Новая статья</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Отправить</button>
-    </form>
-{% endblock %}
+  {% block content %}
+    {% if user.is_authenticated %}
+      <h1>Новая статья</h1>
+        <form method="POST" class="post-form">{% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="save btn btn-default">Отправить</button>
+        </form>
+    {% else %}
+          <br>
+          <p>Вы не авторизованы. Авторизуйтесь для написания новой записи.</p>
+    {% endif %}
+  {% endblock %}

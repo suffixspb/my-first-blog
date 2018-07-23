@@ -3,6 +3,7 @@ from django.utils import timezone
 from .models import Post
 from .forms import PostForm
 from django.shortcuts import redirect
+from django.contrib.auth import logout
 
 def post_list(request):
     return render(request, 'blog/post_list.html', {})
@@ -41,4 +42,9 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
+
+def logoutUser(request):
+    logout(request)
+    return redirect('post_list', )
+    # Redirect to a success page.
 # Create your views here.

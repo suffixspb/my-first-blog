@@ -13,6 +13,29 @@
               <a href="{% url 'post_new' %}">+</a>
             {% endif %}
         </h1>
+        {% if user.is_authenticated %}
+          <table align="right" border="0">
+            <tr>
+              <td>
+                Hey, <a href="{% url 'admin:index' %}">{{ user.username }} </a>
+              </td>
+              <td style="width: 30px;">
+                <hr noshade style="height: 30px; width: 2px;">
+              </td>
+              <td>
+                <a href="{% url 'Logout' %}">Logout</a>
+              </td>
+            </tr>
+          </table>
+        {% else %}
+          <table align="right" border="0">
+            <tr>
+              <td>
+                <a href="{% url 'admin:index' %}">Login</a>
+              </td>
+            </tr>
+          </table>
+        {% endif %}
     </div>
     <div class="content container">
         <div class="row">
